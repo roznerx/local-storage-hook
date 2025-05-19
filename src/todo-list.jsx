@@ -5,11 +5,13 @@ import useLocalStorage from "./use-local-storage";
 const TodoList = () => {
   const [newTodo, setNewTodo] = useState("");
   const [todos, setTodos] = useLocalStorage("todolist", []);
+
   const handleAddNewTodo = (e) => {
     e.preventDefault();
     setTodos([...todos, { id: uuidv4(), text: newTodo, done: false }]);
     setNewTodo("");
   };
+
   const handleToggleTodo = (todoToToggle) => {
     setTodos(
       todos.map((todo) => {
@@ -23,6 +25,7 @@ const TodoList = () => {
       })
     );
   };
+
   return (
     <div>
       <h1>Todo List App</h1>
